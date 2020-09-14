@@ -27,10 +27,26 @@ export default {
           {
             name: "积水坑总数",
             value: 66,
+          },
+          {
+            name: "积水坑总数",
+            value: 66,
+          },
+          {
+            name: "积水坑总数",
+            value: 66,
+          },
+          {
+            name: "积水坑总数",
+            value: 66,
+          },
+          {
+            name: "积水坑总数",
+            value: 66,
           }
           
         ],
-        rowNum: 4,
+        rowNum: 8,
       },
     };
   },
@@ -39,8 +55,8 @@ export default {
 
 <style scoped>
 .ranking-board {
-  width: 20%;
-  height: 440px;
+  width: 100%;
+  height: 730px;
   box-shadow: 0 0 3px blue;
   display: flex;
   flex-direction: column;

@@ -1,7 +1,7 @@
 <template>
   <div id="rose-chart">
     <div class="rose-chart-title">累计计量资金分布</div>
-    <!-- <dv-charts :option="option" /> -->
+     <dv-charts :option="option" /> 
   </div>
 </template>
 
@@ -29,7 +29,6 @@ export default {
               { name: "路面", value: randomExtend(20, 30) },
               { name: "绿化", value: randomExtend(5, 10) },
               { name: "计日工", value: randomExtend(20, 35) },
-              { name: "除雪", value: randomExtend(5, 10) },
             ],
             insideLabel: {
               show: false,
@@ -81,7 +80,7 @@ export default {
 <style scoped>
 #rose-chart {
   width: 30%;
-  height: 100%;
+  height: 440px;
   background-color: rgba(6, 30, 93, 0.5);
   border-top: 2px solid rgba(1, 153, 209, 0.5);
   box-sizing: border-box;
@@ -97,6 +96,10 @@ export default {
 }
 
 .dv-charts-container {
-  height: calc(~"100% - 50px");
+  height: 400px;
+}
+
+.dv-charts-container  canvas{
+  height: 400px;
 }
 </style>

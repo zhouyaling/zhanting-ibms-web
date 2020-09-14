@@ -4,58 +4,49 @@
   <div class="bg">
     <page-layout>
       <div slot="slotHeader" class="page-header" style="background:rgba(6, 30, 93, 0.4)">
-        <dv-decoration-5
-          style="width:45%;height:100px;margin-left:27.5%;"
-          :color="['#2E6099', '#2E6099']"
-        />
-        <dv-decoration-8
-          style="width:20%;height:50px;position: absolute;;top:0"
-          :color="['#2E6099', '#2E6099']"
-        />
-        <dv-decoration-8
-          :reverse="true"
-          style="width:20%;height:50px;position: absolute;;top:0;right:0"
-          :color="['#2E6099', '#2E6099']"
-        />
+        <dv-decoration-5 style="width:45%;height:100px;margin-left:27.5%;" :color="['#2E6099', '#2E6099']" />
+        <dv-decoration-8 style="width:20%;height:50px;position: absolute;;top:0" :color="['#2E6099', '#2E6099']" />
+        <dv-decoration-8 :reverse="true" style="width:20%;height:50px;position: absolute;;top:0;right:0" :color="['#2E6099', '#2E6099']" />
         <div class="header-name" style="top:25%;color:#2E6099">{{projectName}}</div>
       </div>
       <div slot="slotContent" class="wrap">
         <digital-flop></digital-flop>
-        <div class="block-left-right-content">
+        <div class="block-left-content">
           <div style="width:100%">
             <ranking-board />
-            <div style="height:200px;width:20%;margin-top:60px">
-              <dv-border-box-10>
-                <div class="dianya-box">
-                  <div>电压</div>
-                  <div>
-                    <div>
-                      <span>功率</span>
-                      <span>10KW</span>
+            <!--<div style="height:200px;width:100%;margin-top:60px">
+                  <dv-border-box-10>
+                    <div class="dianya-box">
+                      <div>电压</div>
+                      <div>
+                        <div>
+                          <span>功率</span>
+                          <span>10KW</span>
+                        </div>
+                        <div>
+                          <span>电流</span>
+                          <span>100V</span>
+                        </div>
+                        <div>
+                          <span>电压</span>
+                          <span>100A</span>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <span>电流</span>
-                      <span>100V</span>
-                    </div>
-                    <div>
-                      <span>电压</span>
-                      <span>100A</span>
-                    </div>
-                  </div>
-                </div>
-              </dv-border-box-10>
-            </div>
+                  </dv-border-box-10>
+                </div>-->
           </div>
-          <div class="block-top-bottom-content">
-            <div class="block-top-content">
-              <rose-chart />
-
-              <!-- <water-level-chart /> -->
-
-              <!-- <scroll-board /> -->
-            </div>
-
-            <!-- <cards /> -->
+        </div>
+        <div class="block-right-content">
+          <div class="block-top-content">
+            <rose-chart />
+            <water-level-chart />
+            <scroll-board />
+          </div>
+          <div clas="block-bottom-content">
+            <monitor-card> </monitor-card>
+            <monitor-card> </monitor-card>
+            <line-chart></line-chart>
           </div>
         </div>
       </div>
@@ -67,14 +58,21 @@ import PageLayout from "../../components/pageLayout";
 import DigitalFlop from "../part/digitalFlop";
 import RankingBoard from "../part/rankingBoard";
 import RoseChart from "../part/roseChart";
-
+import WaterLevelChart from "../part/waterLevelChart";
+import ScrollBoard from "../part/scrollBoard";
+import MonitorCard from "../part/monitorCard";
+import LineChart from "../part/lineChart";
 export default {
   name: "Index",
   components: {
     PageLayout,
     DigitalFlop,
     RankingBoard,
-    RoseChart
+    RoseChart,
+    WaterLevelChart,
+    ScrollBoard,
+    MonitorCard,
+    LineChart
   },
   data() {
     return {
@@ -85,7 +83,7 @@ export default {
     this.projectId = this.$route.query.projectId;
     this.projectName = this.$route.query.projectName;
   },
-  beforeDestroy() {},
+  beforeDestroy() { },
   methods: {},
 };
 </script>
@@ -111,18 +109,23 @@ export default {
   margin: 0 2.5%;
 }
 
-.block-left-right-content {
+.block-left-content {
   flex: 1;
   display: flex;
   margin-top: 20px;
+  float: left;
+  width: 20%;
 }
 
-.block-top-bottom-content {
+.block-right-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  margin-top: 50px;
   padding-left: 20px;
+  float: left;
+  width: 80%;
 }
 
 .block-top-content {
@@ -133,16 +136,21 @@ export default {
   padding-bottom: 20px;
 }
 
+
+
+
 /* 电压模块 */
+
 .dianya-box {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
 }
 
-.dianya-box > div:nth-of-type(1) {
+.dianya-box>div:nth-of-type(1) {
   width: 50%;
   min-width: 30%;
   font-size: 24px;
@@ -154,10 +162,10 @@ export default {
   line-height: 166px;
   color: #0F2B73;
   font-weight: 600;
-  border-right:1px solid #133180;
+  border-right: 1px solid #133180;
 }
 
-.dianya-box > div:nth-of-type(2) {
+.dianya-box>div:nth-of-type(2) {
   font-size: 14px;
   width: 50%;
   display: flex;
@@ -168,7 +176,7 @@ export default {
   text-align: center;
 }
 
-.dianya-box > div:nth-of-type(2) > div {
+.dianya-box>div:nth-of-type(2)>div {
   width: 70%;
 }
 </style>
