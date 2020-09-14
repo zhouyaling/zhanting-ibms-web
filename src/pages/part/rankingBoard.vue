@@ -57,7 +57,7 @@ export default {
 .ranking-board {
   width: 100%;
   height: 730px;
-  box-shadow: 0 0 3px blue;
+  /*box-shadow: 0 0 3px blue;*/
   display: flex;
   flex-direction: column;
   background-color: rgba(6, 30, 93, 0.5);

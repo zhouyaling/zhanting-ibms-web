@@ -1,8 +1,8 @@
 <template>
     <div id="scroll-board">
         <div class="check-action">
-            <div class="active">电</div>
-            <div > 水</div>
+            <div v-bind:class="current==1?'active':''" @click="changeA(1)">电</div>
+            <div v-bind:class="current==2?'active':''" @click="changeA(2)"> 水</div>
         </div>
         <div class="lineChart" ref="lineChart"></div>.
     </div>
@@ -17,41 +17,20 @@ export default {
   },
   data() {
     return {
+      current:1,
       xData: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       yData: [10, 20, 30, 20, 20, 40, 50, 90,70, 110, 100, 80],
        yData2: [90,70, 110, 100, 80,10, 20, 30, 20, 20, 40, 50],
       myChart: null,
     };
   },
-  watch: {
-    // data(newD, oldD) {
-    //   if (newD) {
-    //     // this.xData = [];
-    //     // this.yData = [];
-    //     // this.showData();
-    //     if (this.myChart) {
-    //       this.myChart.setOption(
-    //         {
-    //           xAxis: {
-    //             data: this.xData,
-    //           },
-    //           series: [
-    //             {
-    //               name: "告警",
-    //               data: this.yData,
-    //             },
-    //           ],
-    //         },
-    //         { notMerge: false, lazyUpdate: false, silent: false }
-    //       );
-    //     }
-    //   }
-    // },
-  },
   mounted() {
     this.initChart();
   },
   methods: {
+    changeA(type){
+        this.current = type;
+    },
     // 初始化地图
     initChart() {
       this.myChart = echarts.init(this.$refs.lineChart); //这里是为了获得容器所在位置
@@ -268,6 +247,7 @@ export default {
     height: 24px;
     border: 1px solid #1981F6;
     font-size: 12px;
+    z-index: 99999!important;
 }
 
 .check-action>div {
@@ -275,6 +255,7 @@ export default {
     float: left;
     line-height: 24px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .check-action>div:nth-of-type(1) {
@@ -282,8 +263,7 @@ export default {
 }
 
 .check-action>div.active {
-    background:#1981F6;
+    background: #1981F6;
 }
-
 </style>
 
