@@ -1,0 +1,176 @@
+
+
+<template>
+  <div class="bg">
+    <page-layout>
+      <div slot="slotHeader" class="page-header" style="background:rgba(6, 30, 93, 0.4)">
+        <dv-decoration-5
+          style="width:45%;height:100px;margin-left:27.5%;"
+          :color="['#2E6099', '#2E6099']"
+        />
+        <dv-decoration-8
+          style="width:20%;height:50px;position: absolute;;top:0"
+          :color="['#2E6099', '#2E6099']"
+        />
+        <dv-decoration-8
+          :reverse="true"
+          style="width:20%;height:50px;position: absolute;;top:0;right:0"
+          :color="['#2E6099', '#2E6099']"
+        />
+        <div class="header-name" style="top:25%;color:#2E6099">{{projectName}}</div>
+      </div>
+      <div slot="slotContent" class="wrap">
+        <digital-flop></digital-flop>
+        <div class="block-left-right-content">
+          <div style="width:100%">
+            <ranking-board />
+            <div style="height:200px;width:20%;margin-top:60px">
+              <dv-border-box-10>
+                <div class="dianya-box">
+                  <div>电压</div>
+                  <div>
+                    <div>
+                      <span>功率</span>
+                      <span>10KW</span>
+                    </div>
+                    <div>
+                      <span>电流</span>
+                      <span>100V</span>
+                    </div>
+                    <div>
+                      <span>电压</span>
+                      <span>100A</span>
+                    </div>
+                  </div>
+                </div>
+              </dv-border-box-10>
+            </div>
+          </div>
+          <div class="block-top-bottom-content">
+            <div class="block-top-content">
+              <rose-chart />
+
+              <!-- <water-level-chart /> -->
+
+              <!-- <scroll-board /> -->
+            </div>
+
+            <!-- <cards /> -->
+          </div>
+        </div>
+      </div>
+    </page-layout>
+  </div>
+</template>
+<script>
+import PageLayout from "../../components/pageLayout";
+import DigitalFlop from "../part/digitalFlop";
+import RankingBoard from "../part/rankingBoard";
+import RoseChart from "../part/roseChart";
+
+export default {
+  name: "Index",
+  components: {
+    PageLayout,
+    DigitalFlop,
+    RankingBoard,
+    RoseChart
+  },
+  data() {
+    return {
+      projectName: "",
+    };
+  },
+  mounted() {
+    this.projectId = this.$route.query.projectId;
+    this.projectName = this.$route.query.projectName;
+  },
+  beforeDestroy() {},
+  methods: {},
+};
+</script>
+<style scoped>
+.center {
+  width: 51.2%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.left {
+  width: 15.6%;
+  float: left;
+  margin: 0 2.5%;
+  box-sizing: border-box;
+}
+
+.right {
+  width: 23.2%;
+  float: left;
+  box-sizing: border-box;
+  margin: 0 2.5%;
+}
+
+.block-left-right-content {
+  flex: 1;
+  display: flex;
+  margin-top: 20px;
+}
+
+.block-top-bottom-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+
+.block-top-content {
+  height: 55%;
+  display: flex;
+  flex-grow: 0;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+}
+
+/* 电压模块 */
+.dianya-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.dianya-box > div:nth-of-type(1) {
+  width: 50%;
+  min-width: 30%;
+  font-size: 24px;
+  text-align: center;
+  height: 83%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  line-height: 166px;
+  color: #0F2B73;
+  font-weight: 600;
+  border-right:1px solid #133180;
+}
+
+.dianya-box > div:nth-of-type(2) {
+  font-size: 14px;
+  width: 50%;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  height: 80%;
+  flex-direction: column;
+  text-align: center;
+}
+
+.dianya-box > div:nth-of-type(2) > div {
+  width: 70%;
+}
+</style>
+
+
