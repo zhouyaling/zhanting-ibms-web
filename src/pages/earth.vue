@@ -255,7 +255,6 @@ export default {
       this.projectName = params.projectName;
       this.getSubStstemData();
       this.getStatistics();
-      debugger
       this.$router.push({
         query: merge(this.$route.query, {
           projectId: this.projectId,
