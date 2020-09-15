@@ -9,7 +9,7 @@
         <div class="scroll-in">
           <div class="list-item" v-for="(item,index) in data" :key="index" @click="show(item)">
             <div>{{item.projectName}}</div>
-            <div>{{item.equipmentName}}</div>
+            <div>{{item.area}}</div>
           </div>
         </div>
       </div>

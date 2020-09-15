@@ -41,7 +41,7 @@
           <div style="width:340px;margin-left:auto;">
             <title-bar text="项目列表" style="width:100%"></title-bar>
             <dv-border-box-12 style="height:300px">
-              <project-list :data="recordList" @func="projectHandler"></project-list>
+              <project-list :data="projectList" @func="projectHandler"></project-list>
               <!-- <record-show v-if="!showSmallMap" :data="recordList"></record-show> -->
             </dv-border-box-12>
           </div>
@@ -65,6 +65,8 @@ import ProjectList from "../part/projectList";
 import SmallMap from "../part/smallMap";
 import WarnBox from "../part/warnBox";
 
+import {equpmentData,recordData,statisData} from './staticData'
+
 export default {
   name: "Index",
   props: ["userJson"],
@@ -87,6 +89,35 @@ export default {
       showSmallMap: false,
       statisticsData: {}, // 统计数据
       recordList: [], // 告警设备记录
+      projectList:[{
+        projectName:'重庆旭辉东原融创印江州一期',
+        area:'重庆'
+      },
+      {
+        projectName:'重庆旭辉东原融创印江州二期',
+        area:'重庆'
+      },
+      {
+        projectName:'重庆龙湖唐宁one',
+        area:'重庆'
+      },
+      {
+        projectName:'湖北华立凤凰城',
+        area:'湖北'
+      },
+      {
+        projectName:'潮州华侨城纯水岸',
+        area:'广东'
+      },
+      {
+        projectName:'香港置地招商上东汇',
+        area:'香港'
+      },
+      {
+        projectName:'招商礼嘉江悦湾',
+        area:'重庆'
+      }
+      ],
       equipmentAlarmList: [], // 近十二天每日报警设备数量
       timerIndex: null, // 页面数据更新定时器
     };
@@ -104,7 +135,7 @@ export default {
     }
 
     this.getStatistics();
-    this.getRegion();
+    // this.getRegion();
     this.timerInterval();
   },
   beforeDestroy() {
@@ -137,52 +168,55 @@ export default {
 
     // 查询告近一个月每日报警设备数量
     getAlarmEquipment() {
-      this.$axios({
-        method: "get",
-        url: this.$baseUrl + "/s/alarm/equipment",
-      })
-        .then(({ data, status }) => {
-          if (status == 200 && data.success) {
-            this.equipmentAlarmList = data.data;
-          }
-        })
-        .catch((resp) => {
-          console.log("请求失败");
-        });
+       this.equipmentAlarmList = equpmentData.data;
+      // this.$axios({
+      //   method: "get",
+      //   url: this.$baseUrl + "/s/alarm/equipment",
+      // })
+      //   .then(({ data, status }) => {
+      //     if (status == 200 && data.success) {
+      //       this.equipmentAlarmList = data.data;
+      //     }
+      //   })
+      //   .catch((resp) => {
+      //     console.log("请求失败");
+      //   });
     },
 
     // 查询告警设备记录
     getRecord() {
-      this.$axios({
-        method: "get",
-        url:
-          this.$baseUrl +
-          "/s/record?Page=1&PageSize=60&End=&Begin=" +
-          this.dateTimeParam(),
-      })
-        .then(({ data, status }) => {
-          if (status == 200 && data.success) {
-            this.recordList = data.data.list;
-          }
-        })
-        .catch((resp) => {
-          console.log("请求失败");
-        });
+      this.recordList = recordData.data.list;
+      // this.$axios({
+      //   method: "get",
+      //   url:
+      //     this.$baseUrl +
+      //     "/s/record?Page=1&PageSize=60&End=&Begin=" +
+      //     this.dateTimeParam(),
+      // })
+      //   .then(({ data, status }) => {
+      //     if (status == 200 && data.success) {
+      //       this.recordList = data.data.list;
+      //     }
+      //   })
+      //   .catch((resp) => {
+      //     console.log("请求失败");
+      //   });
     },
     // 查询统计数据
     getStatistics() {
-      this.$axios({
-        method: "get",
-        url: this.$baseUrl + "/s",
-      })
-        .then(({ data, status }) => {
-          if (status == 200 && data.success) {
-            this.statisticsData = data.data;
-          }
-        })
-        .catch((resp) => {
-          console.log("请求失败");
-        });
+      this.statisticsData = statisData.data;
+      // this.$axios({
+      //   method: "get",
+      //   url: this.$baseUrl + "/s",
+      // })
+      //   .then(({ data, status }) => {
+      //     if (status == 200 && data.success) {
+      //       this.statisticsData = data.data;
+      //     }
+      //   })
+      //   .catch((resp) => {
+      //     console.log("请求失败");
+      //   });
     },
 
     // 底部按钮

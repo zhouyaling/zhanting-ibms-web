@@ -16,7 +16,7 @@
             <div>{{item.projectName}}</div>
             <div>{{item.equipmentName}}</div>
             <div>{{item.alarmType}}</div>
-            <div>{{item.alarmTime ? item.alarmTime.split("T")[0]:''}}</div>
+            <div>{{item.alarmTime | filterTime}}</div>
             <div>{{item.status==2?'已处理':(item.status=='1'?'处理中':'报警中')}}</div>
           </div>
         </div>
@@ -28,15 +28,34 @@
 import TitleBar from "../../components/titleBar";
 export default {
   props: ["data"],
-  components:{TitleBar},
+  components: { TitleBar },
   data() {
     return {
       timer1: null,
-      timer2:null,
+      timer2: null,
       sTab: "",
       speed: "",
-      tbdh: ""
+      tbdh: "",
     };
+  },
+  filters: {
+    filterTime: function (value) {
+      if (!value) {
+        return "";
+      } else {
+        var timestamp = new Date().valueOf();
+        var newDate = new Date(
+          timestamp - 1000 * 3600 * 24 * Math.ceil(Math.random() * 4)
+        );
+        return (
+          newDate.getFullYear() +"-"+
+          (newDate.getMonth() + 1 < 10 ? "0" : "") +
+          (newDate.getMonth() + 1) +"-"+
+          (newDate.getDate() < 10 ? "0" : "") +
+          newDate.getDate()
+        ) + " "+ value;
+      }
+    },
   },
   watch: {
     data(newD, eldD) {
@@ -48,7 +67,7 @@ export default {
           }, 2000);
         }
       }
-    }
+    },
   },
   mounted() {
     if (this.data.length > 0) {
@@ -60,7 +79,7 @@ export default {
   },
   beforeDestroy() {
     window.clearInterval(this.timer1);
-    window.clearTimeout(this.timer2)
+    window.clearTimeout(this.timer2);
   },
   methods: {
     scrollList() {
@@ -85,8 +104,8 @@ export default {
         console.log("滚动");
         this.scrollTop(); //因为偷梁换柱消耗了一次过程,所以把这一次过程补回来
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

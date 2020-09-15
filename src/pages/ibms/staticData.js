@@ -1,0 +1,194 @@
+const equpmentData = {
+	"success": true,
+	"message": "success",
+	"data": [{
+		"date": "2020-09-15",
+		"total": 60
+	}, {
+		"date": "2020-09-14",
+		"total": 50
+	}, {
+		"date": "2020-09-13",
+		"total": 45
+	}, {
+		"date": "2020-09-12",
+		"total": 32
+	}, {
+		"date": "2020-09-11",
+		"total": 14
+	}, {
+		"date": "2020-09-10",
+		"total": 35
+	}, {
+		"date": "2020-09-09",
+		"total": 54
+	}, {
+		"date": "2020-09-08",
+		"total": 34
+	}, {
+		"date": "2020-09-07",
+		"total": 22
+	}, {
+		"date": "2020-09-06",
+		"total": 27
+	}, {
+		"date": "2020-09-05",
+		"total": 62
+	}, {
+		"date": "2020-09-04",
+		"total": 23
+	}, {
+		"date": "2020-09-03",
+		"total": 41
+	}, {
+		"date": "2020-09-02",
+		"total": 12
+	}, {
+		"date": "2020-09-01",
+		"total": 24
+	}, {
+		"date": "2020-08-31",
+		"total": 41
+	}, {
+		"date": "2020-08-30",
+		"total": 22
+	}, {
+		"date": "2020-08-29",
+		"total": 26
+	}, {
+		"date": "2020-08-28",
+        "total": 30
+    },
+    {
+		"date": "2020-08-27",
+		"total": 21
+	}, {
+		"date": "2020-08-26",
+		"total": 41
+	}, {
+		"date": "2020-08-25",
+		"total": 31
+	}, {
+		"date": "2020-08-24",
+		"total": 41
+	}, {
+		"date": "2020-08-23",
+		"total": 27
+	}, {
+		"date": "2020-08-22",
+		"total": 33
+	}, {
+		"date": "2020-08-21",
+		"total": 62
+	}, {
+		"date": "2020-08-20",
+		"total": 22
+	}, {
+		"date": "2020-08-19",
+		"total": 31
+	}, {
+		"date": "2020-08-18",
+		"total": 35
+	}, {
+		"date": "2020-08-17",
+		"total": 33
+	}, {
+		"date": "2020-08-16",
+		"total": 22
+	}]
+};
+
+const recordData = {
+	"success": true,
+	"message": "success",
+	"data": {
+		"list": [{
+			"projectId": "198",
+			"projectName": "重庆旭辉东原融创印江州一期",
+			"equipmentName": "一氧化碳",
+			"alarmType": "一氧化碳浓度过高",
+			"alarmTime": "18:06:08",
+			"status": 0
+		}, {
+			"projectId": "198",
+			"projectName": "重庆龙湖唐宁one",
+			"equipmentName": "路面",
+			"alarmType": "路面松散",
+			"alarmTime": "17:54:16",
+			"status": 2
+		}, {
+			"projectId": "198",
+			"projectName": "湖北华立凤凰城",
+			"equipmentName": "一氧化碳",
+			"alarmType": "一氧化碳浓度过高",
+			"alarmTime": "17:36:53",
+			"status": 2
+		}, {
+			"projectId": "198",
+			"projectName": "重庆龙湖唐宁one",
+			"equipmentName": "一氧化碳",
+			"alarmType": "一氧化碳浓度过高",
+			"alarmTime": "17:10:47",
+			"status": 2
+		}, {
+			"projectId": "198",
+			"projectName": "湖北华立凤凰城",
+			"equipmentName": "一氧化碳",
+			"alarmType": "一氧化碳浓度过高",
+			"alarmTime": "16:57:55",
+			"status": 2
+		}, {
+			"projectId": "198",
+			"projectName": "重庆龙湖唐宁one",
+			"equipmentName": "一氧化碳",
+			"alarmType": "一氧化碳浓度过高",
+			"alarmTime": "16:18:28",
+			"status": 2
+		}, {
+			"projectId": "198",
+			"projectName": "香港置地招商上东汇",
+			"equipmentName": "一氧化碳",
+			"alarmType": "一氧化碳浓度过高",
+			"alarmTime": "14:18:12.923",
+			"status": 2
+		}, {
+			"projectId": "198",
+			"projectName": "重庆旭辉东原融创印江州二期",
+			"equipmentName": "一氧化碳",
+			"alarmType": "一氧化碳浓度过高",
+			"alarmTime": "14:12:45",
+			"status": 2
+		}, {
+			"projectId": "198",
+			"projectName": "招商礼嘉江悦湾",
+			"equipmentName": "一氧化碳",
+			"alarmType": "一氧化碳浓度过高",
+			"alarmTime": "14:09:42",
+			"status": 2
+		}],
+		"page": 1,
+		"pageSize": 1,
+		"pageTotal": 36560,
+		"total": 36559
+	}
+}
+
+const statisData = {
+	"success": true,
+	"message": "success",
+	"data": {
+		"projectTotal": 6,
+		"alarmTotal": 201198,
+		"handledAlarmTotal": 200639,
+		"repairTotal": 0,
+		"noticeTotal": 18,
+		"powerTotal": 656132.24,
+		"waterTotal": 70.31,
+		"status": 1
+	}
+};
+export {
+    equpmentData,
+    recordData,
+    statisData
+}

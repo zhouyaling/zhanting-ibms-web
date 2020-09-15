@@ -59,7 +59,15 @@ export default {
     showData() {
       this.data.forEach((element, index) => {
         if (index < 12) {
-          this.xData.unshift(element.date ? element.date.substr(5) : "");
+          var timestamp = new Date().valueOf();
+          var newDate = new Date(timestamp - 1000 * 3600 * 24 * (index +1));
+          var dateStr =
+           ((newDate.getMonth() + 1 < 10 ? "0" : "") +
+            (newDate.getMonth() + 1) +
+            "-" +
+            (newDate.getDate() < 10 ? "0" : "") +
+            newDate.getDate()) ;
+          this.xData.unshift(dateStr);
           this.yData.unshift(element.total);
         }
       });

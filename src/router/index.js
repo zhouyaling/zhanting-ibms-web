@@ -14,16 +14,16 @@ export default new Router({
       name: 'IbmsPage',
       component: IbmsPage
     },
-    {
-      path: '/index',
-      name: 'IndexPage',
-      component: IndexPage
-    },
-    {
-      path: '/earth',
-      name: 'EarthPage',
-      component: EarthPage
-    },
+    // {
+    //   path: '/index',
+    //   name: 'IndexPage',
+    //   component: IndexPage
+    // },
+    // {
+    //   path: '/earth',
+    //   name: 'EarthPage',
+    //   component: EarthPage
+    // },
     {
       path: '/detail',
       name: 'DetailPage',
