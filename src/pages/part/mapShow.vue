@@ -189,7 +189,7 @@ export default {
             normal: {
               borderWidth: 3,
               borderColor: "#67D0FF",
-              shadowColor: "#67D0FF",
+              shadowColor: "#35447C",
               shadowOffsetX: -3,
               shadowOffsetY: 15,
               shadowBlur: 0,
@@ -290,9 +290,9 @@ export default {
               fontSize: 12,
               color: "#ffffff",
             },
-            areaColor: this.place.indexOf("china") > -1 ? "#002D4B" : "#044B8A",
-            borderColor: "#0F4494", //省市边界线041460
-            borderWidth: 2,
+            areaColor: this.place.indexOf("china") > -1 ? "#173261" : "#044B8A",
+            borderColor: "#35447C", //省市边界线041460
+            borderWidth: 1,
             shadowBlur: 0,
           },
         },

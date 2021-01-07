@@ -4,7 +4,7 @@
     <div class="circle-text">
       <div>项目总数</div>
       <div>
-        <span ><countTo :startVal="0" :endVal="data" :duration="3000"></countTo></span>个
+        <span ><countTo :startVal="0" :endVal="8" :duration="3000"></countTo></span>个
       </div>
     </div>
   </div>

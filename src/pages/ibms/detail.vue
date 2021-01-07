@@ -13,13 +13,13 @@
         <digital-flop :numbers="currentNumbers"></digital-flop>
         <div class="block-left-content">
           <div style="width:100%">
-            <ranking-board />
+            <ranking-board :waterList="waterList" />
           </div>
         </div>
         <div class="block-right-content">
           <div class="block-top-content">
             <rose-chart />
-            <water-level-chart />
+            <water-level-chart :moneyInfo="moneyInfo" />
             <scroll-board />
           </div>
           <div clas="block-bottom-content">
@@ -55,6 +55,8 @@ export default {
   },
   data() {
     return {
+      moneyInfo:{},
+      waterList:[],
       currentNumbers:[0,0,0,0,0,0,0],
       projectName: "",
     };
@@ -64,7 +66,10 @@ export default {
     this.projectName = this.$route.query.projectName;
     staticProjectData.forEach(element => {
         if(element.projectName==this.projectName){
+          debugger
           this.currentNumbers = element.numbers
+          this.waterList = element.waterList
+          this.moneyInfo = element.moneyInfo
         }
     });
   },

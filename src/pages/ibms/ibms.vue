@@ -47,7 +47,7 @@
 
           <div style="width: 340px; margin-left: auto">
             <title-bar text="项目列表" style="width: 100%"></title-bar>
-            <dv-border-box-12 style="height: 300px">
+            <dv-border-box-12 style="height: 330px">
               <project-list
                 :data="projectList"
                 @func="projectHandler"
@@ -120,7 +120,6 @@ export default {
     }
 
     this.getStatistics();
-    // this.getRegion();
     this.timerInterval();
   },
   beforeDestroy() {
@@ -135,22 +134,6 @@ export default {
       }, 30000);
     },
 
-    // 查询已接入区域
-    getRegion() {
-      this.$axios({
-        method: "get",
-        url: this.$baseUrl + "/s/region",
-      })
-        .then(({ data, status }) => {
-          if (status == 200 && data.success) {
-            this.$store.commit("changeRegionList", data.data);
-          }
-        })
-        .catch((resp) => {
-          console.log("请求失败");
-        });
-    },
-
     // 查询告近一个月每日报警设备数量
     getAlarmEquipment() {
       this.equipmentAlarmList = equpmentData.data;
@@ -162,7 +145,38 @@ export default {
     },
     // 查询统计数据
     getStatistics() {
-      this.statisticsData = statisData.data;
+      var d = statisData.data.powerTotal + this.randomExtend(300,600,1)
+       var w = statisData.data.waterTotal + this.randomExtend(60,100,2)
+      this.statisticsData = {...statisData.data,powerTotal:d,waterTotal:w};
+    },
+
+    randomExtend(minNum, maxNum, type) {
+      debugger
+      var date = new Date();
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      var d = date.getDate();
+      var h = date.getHours();
+      var mm = date.getMinutes();
+      var s = date.getSeconds();
+      var dd = date.valueOf();
+      var _d =
+        y.toString() +
+        "-" +
+        (m < 10 ? "0" : "") +
+        m.toString() +
+        "-" +
+        (d < 10 ? "0" : "") +
+        d.toString();
+      var ddd = new Date(_d).valueOf();
+      switch (type) {
+        case 1:
+          return minNum + (dd - ddd) / 6000 + Math.ceil(Math.random() * 2);
+          break;
+        default:
+           return minNum + (dd - ddd) / 60000 + Math.ceil(Math.random() * 3);
+          break;
+      }
     },
 
     // 底部按钮

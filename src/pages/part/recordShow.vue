@@ -4,9 +4,9 @@
     <div></div>
     <div class="top-title">
       <div>项目</div>
-      <div style="width:25%">设备名称</div>
-      <div>报警类型</div>
-      <div>报警时间</div>
+      <!-- <div style="width:25%">设备名称</div> -->
+      <div style="width:30%">报警类型</div>
+      <div style="width:30%">报警时间</div>
       <div style="width:15%">处理状态</div>
     </div>
     <div class="scrollDiv" ref="scrollDiv" style="position:relative; width:100%;overflow: hidden;">
@@ -14,9 +14,9 @@
         <div class="scroll-in">
           <div class="list-item" v-for="(item,index) in data" :key="index">
             <div>{{item.projectName}}</div>
-            <div>{{item.equipmentName}}</div>
-            <div>{{item.alarmType}}</div>
-            <div>{{item.alarmTime | filterTime}}</div>
+            <!-- <div>{{item.equipmentName}}</div> -->
+            <div style="width:30%">{{item.alarmType}}</div>
+            <div style="width:30%">{{item.alarmTime | filterTime}}</div>
             <div>{{item.status==2?'已处理':(item.status=='1'?'处理中':'报警中')}}</div>
           </div>
         </div>

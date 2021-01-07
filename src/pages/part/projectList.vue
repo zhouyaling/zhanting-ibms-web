@@ -5,7 +5,7 @@
       <div style="width:50%">所在区域</div>
     </div>
     <div class="scrollDiv" ref="scrollDiv" style="position:relative; width:100%;overflow: hidden;">
-      <div class="scrollContent" style="height:210px;position:absolute;width:100%">
+      <div class="scrollContent" style="height:260px;position:absolute;width:100%">
         <div class="scroll-in">
           <div class="list-item" v-for="(item,index) in data" :key="index" @click="show(item)">
             <div>{{item.projectName}}</div>
@@ -217,8 +217,8 @@ export default {
 
 .list-item {
   width: 90%;
-  height: 42px;
-  line-height: 42px;
+  height: 38px;
+  line-height: 38px;
   clear: both;
   overflow: hidden;
   margin: 0 auto;
@@ -247,7 +247,7 @@ export default {
 } */
 
 .scrollDiv {
-  height: 220px;
+  height: 260px;
   position: absolute;
   width: 100%;
 }

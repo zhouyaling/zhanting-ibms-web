@@ -1,6 +1,6 @@
 <template>
   <div class="ranking-board">
-    <div class="ranking-board-title">给排水记录数量</div>
+    <div class="ranking-board-title">给排水比例</div>
     <dv-scroll-ranking-board :config="config" />
   </div>
 </template>
@@ -8,48 +8,24 @@
 <script>
 export default {
   name: "RankingBoard",
+  props: ["waterList"],
+  watch:{
+    waterList(newD,oldD){
+      debugger
+      this.config ={
+        data:this.waterList,
+        rowNum:8
+      }
+    }
+  },
   data() {
     return {
       config: {
-        data: [
-          {
-            name: "生活水泵总数",
-            value: 55,
-          },
-          {
-            name: "生活水箱总数",
-            value: 120,
-          },
-          {
-            name: "排水泵总数",
-            value: 78,
-          },
-          {
-            name: "积水坑总数",
-            value: 66,
-          },
-          {
-            name: "积水坑总数",
-            value: 66,
-          },
-          {
-            name: "积水坑总数",
-            value: 66,
-          },
-          {
-            name: "积水坑总数",
-            value: 66,
-          },
-          {
-            name: "积水坑总数",
-            value: 66,
-          }
-          
-        ],
-        rowNum: 8,
-      },
+        data: [],
+        rowNum: 8
+      }
     };
-  },
+  }
 };
 </script>
 

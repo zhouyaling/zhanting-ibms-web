@@ -177,7 +177,7 @@ const statisData = {
 	"success": true,
 	"message": "success",
 	"data": {
-		"projectTotal": 6,
+		"projectTotal": 8,
 		"alarmTotal": 201198,
 		"handledAlarmTotal": 200639,
 		"repairTotal": 0,
