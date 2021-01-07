@@ -4,19 +4,26 @@
   <div class="bg">
     <page-layout>
       <div slot="slotHeader" class="page-header">
-        <dv-decoration-5 style="width:45%;height:100px;margin-left:27.5%;" :color="['#2E6099', '#2E6099']" />
-        <dv-decoration-8 style="width:20%;height:50px;position: absolute;;top:0" :color="['#2E6099', '#2E6099']"  />
+        <dv-decoration-5
+          style="width: 45%; height: 100px; margin-left: 27.5%"
+          :color="['#2E6099', '#2E6099']"
+        />
+        <dv-decoration-8
+          style="width: 20%; height: 50px; position: absolute; top: 0"
+          :color="['#2E6099', '#2E6099']"
+        />
         <dv-decoration-8
           :reverse="true"
-          style="width:20%;height:50px;position: absolute;;top:0;right:0" :color="['#2E6099', '#2E6099']" 
+          style="width: 20%; height: 50px; position: absolute; top: 0; right: 0"
+          :color="['#2E6099', '#2E6099']"
         />
-        <div class="header-name" style="top:25%;color:#2E6099">IBMS</div>
+        <div class="header-name" style="top: 25%; color: #2e6099">IBMS</div>
       </div>
       <div slot="slotContent" class="wrap">
         <!-- 左侧区域 -->
         <div class="left">
           <title-bar text="项目工单"></title-bar>
-          <div class="module" style="display:inline-block">
+          <div class="module" style="display: inline-block">
             <alarms-show :data="statisticsData"></alarms-show>
           </div>
           <record-show v-if="!showSmallMap" :data="recordList"></record-show>
@@ -34,18 +41,24 @@
         <div></div>
         <!-- 右侧区域 -->
         <div class="right">
-          <div class="module" style="margin:0">
+          <div class="module" style="margin: 0">
             <circle-show :data="statisticsData.projectTotal"></circle-show>
           </div>
 
-          <div style="width:340px;margin-left:auto;">
-            <title-bar text="项目列表" style="width:100%"></title-bar>
-            <dv-border-box-12 style="height:300px">
-              <project-list :data="projectList" @func="projectHandler"></project-list>
+          <div style="width: 340px; margin-left: auto">
+            <title-bar text="项目列表" style="width: 100%"></title-bar>
+            <dv-border-box-12 style="height: 300px">
+              <project-list
+                :data="projectList"
+                @func="projectHandler"
+              ></project-list>
               <!-- <record-show v-if="!showSmallMap" :data="recordList"></record-show> -->
             </dv-border-box-12>
           </div>
-          <trend-show v-if="!showSmallMap" :data="equipmentAlarmList"></trend-show>
+          <trend-show
+            v-if="!showSmallMap"
+            :data="equipmentAlarmList"
+          ></trend-show>
         </div>
       </div>
     </page-layout>
@@ -65,7 +78,7 @@ import ProjectList from "../part/projectList";
 import SmallMap from "../part/smallMap";
 import WarnBox from "../part/warnBox";
 
-import {equpmentData,recordData,statisData} from './staticData'
+import { equpmentData, recordData, statisData } from "./staticData";
 
 export default {
   name: "Index",
@@ -89,35 +102,7 @@ export default {
       showSmallMap: false,
       statisticsData: {}, // 统计数据
       recordList: [], // 告警设备记录
-      projectList:[{
-        projectName:'重庆旭辉东原融创印江州一期',
-        area:'重庆'
-      },
-      {
-        projectName:'重庆旭辉东原融创印江州二期',
-        area:'重庆'
-      },
-      {
-        projectName:'重庆龙湖唐宁one',
-        area:'重庆'
-      },
-      {
-        projectName:'湖北华立凤凰城',
-        area:'湖北'
-      },
-      {
-        projectName:'潮州华侨城纯水岸',
-        area:'广东'
-      },
-      {
-        projectName:'香港置地招商上东汇',
-        area:'香港'
-      },
-      {
-        projectName:'招商礼嘉江悦湾',
-        area:'重庆'
-      }
-      ],
+      projectList: staticProjectData,
       equipmentAlarmList: [], // 近十二天每日报警设备数量
       timerIndex: null, // 页面数据更新定时器
     };
@@ -168,55 +153,16 @@ export default {
 
     // 查询告近一个月每日报警设备数量
     getAlarmEquipment() {
-       this.equipmentAlarmList = equpmentData.data;
-      // this.$axios({
-      //   method: "get",
-      //   url: this.$baseUrl + "/s/alarm/equipment",
-      // })
-      //   .then(({ data, status }) => {
-      //     if (status == 200 && data.success) {
-      //       this.equipmentAlarmList = data.data;
-      //     }
-      //   })
-      //   .catch((resp) => {
-      //     console.log("请求失败");
-      //   });
+      this.equipmentAlarmList = equpmentData.data;
     },
 
     // 查询告警设备记录
     getRecord() {
       this.recordList = recordData.data.list;
-      // this.$axios({
-      //   method: "get",
-      //   url:
-      //     this.$baseUrl +
-      //     "/s/record?Page=1&PageSize=60&End=&Begin=" +
-      //     this.dateTimeParam(),
-      // })
-      //   .then(({ data, status }) => {
-      //     if (status == 200 && data.success) {
-      //       this.recordList = data.data.list;
-      //     }
-      //   })
-      //   .catch((resp) => {
-      //     console.log("请求失败");
-      //   });
     },
     // 查询统计数据
     getStatistics() {
       this.statisticsData = statisData.data;
-      // this.$axios({
-      //   method: "get",
-      //   url: this.$baseUrl + "/s",
-      // })
-      //   .then(({ data, status }) => {
-      //     if (status == 200 && data.success) {
-      //       this.statisticsData = data.data;
-      //     }
-      //   })
-      //   .catch((resp) => {
-      //     console.log("请求失败");
-      //   });
     },
 
     // 底部按钮
@@ -317,7 +263,6 @@ export default {
   box-sizing: border-box;
   margin: 0 2.5%;
 }
-
 </style>
 
 

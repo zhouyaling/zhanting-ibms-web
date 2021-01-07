@@ -9,9 +9,9 @@
       <div class="digital-flop">
         <dv-digital-flop
           :config="item.number"
-          style="width:100px;height:50px;"
+          style="width: 100px; height: 50px"
         />
-          <div class="unit">{{ item.unit }}</div>
+        <div class="unit">{{ item.unit }}</div>
       </div>
     </div>
 
@@ -22,20 +22,120 @@
 <script>
 export default {
   name: "DigitalFlop",
+  props: ["numbers"],
   data() {
     return {
       digitalFlopData: [],
     };
   },
+  watch: {
+    numbers(newD, oldD) {
+      if (newD) {
+        const { randomExtend } = this;
+        this.digitalFlopData = [
+          {
+            title: "报警数",
+            number: {
+              number: [randomExtend(this.numbers[0], 30000, 1)],
+              content: "{nt}",
+              textAlign: "right",
+              style: {
+                fill: "#4d99fc",
+                fontWeight: "bold",
+              },
+            },
+            unit: "个",
+          },
+          {
+            title: "工单数",
+            number: {
+              number: [randomExtend(this.numbers[1], 39, 2)],
+              content: "{nt}",
+              textAlign: "right",
+              style: {
+                fill: "#f46827",
+                fontWeight: "bold",
+              },
+            },
+            unit: "个",
+          },
+          {
+            title: "通知公告",
+            number: {
+              number: [randomExtend(this.numbers[2], 30, 3)],
+              content: "{nt}",
+              textAlign: "right",
+              style: {
+                fill: "#40faee",
+                fontWeight: "bold",
+              },
+            },
+            unit: "条",
+          },
+          {
+            title: "耗电数",
+            number: {
+              number: [randomExtend(this.numbers[3], 6578, 4)],
+              content: "{nt}",
+              textAlign: "right",
+              style: {
+                fill: "#4d99fc",
+                fontWeight: "bold",
+              },
+            },
+            unit: "KWH",
+          },
+          {
+            title: "排水量",
+            number: {
+              number: [randomExtend(this.numbers[4], 3000, 5)],
+              content: "{nt}",
+              textAlign: "right",
+              style: {
+                fill: "#f46827",
+                fontWeight: "bold",
+              },
+            },
+            unit: "T",
+          },
+          {
+            title: "门禁总数",
+            number: {
+              number: [randomExtend(this.numbers[5], 17, 6)],
+              content: "{nt}",
+              textAlign: "right",
+              style: {
+                fill: "#40faee",
+                fontWeight: "bold",
+              },
+            },
+            unit: "个",
+          },
+          {
+            title: "巡更点",
+            number: {
+              number: [randomExtend(this.numbers[6], 55, 7)],
+              content: "{nt}",
+              textAlign: "right",
+              style: {
+                fill: "#4d99fc",
+                fontWeight: "bold",
+              },
+            },
+            unit: "个",
+          },
+        ];
+      }
+    },
+  },
   methods: {
     createData() {
       const { randomExtend } = this;
-
       this.digitalFlopData = [
         {
           title: "报警数",
           number: {
-            number: [randomExtend(20000, 30000)],
+            number: [randomExtend(this.numbers[0], 30000, 1)],
             content: "{nt}",
             textAlign: "right",
             style: {
@@ -48,7 +148,7 @@ export default {
         {
           title: "工单数",
           number: {
-            number: [randomExtend(20, 30)],
+            number: [randomExtend(this.numbers[1], 39, 2)],
             content: "{nt}",
             textAlign: "right",
             style: {
@@ -61,7 +161,7 @@ export default {
         {
           title: "通知公告",
           number: {
-            number: [randomExtend(20, 30)],
+            number: [randomExtend(this.numbers[2], 30, 3)],
             content: "{nt}",
             textAlign: "right",
             style: {
@@ -74,7 +174,7 @@ export default {
         {
           title: "耗电数",
           number: {
-            number: [randomExtend(10, 20)],
+            number: [randomExtend(this.numbers[3], 6578, 4)],
             content: "{nt}",
             textAlign: "right",
             style: {
@@ -85,9 +185,9 @@ export default {
           unit: "KWH",
         },
         {
-          title: "用电数",
+          title: "排水量",
           number: {
-            number: [randomExtend(5, 10)],
+            number: [randomExtend(this.numbers[4], 3000, 5)],
             content: "{nt}",
             textAlign: "right",
             style: {
@@ -100,7 +200,7 @@ export default {
         {
           title: "门禁总数",
           number: {
-            number: [randomExtend(5, 10)],
+            number: [randomExtend(this.numbers[5], 17, 6)],
             content: "{nt}",
             textAlign: "right",
             style: {
@@ -113,7 +213,7 @@ export default {
         {
           title: "巡更点",
           number: {
-            number: [randomExtend(5, 10)],
+            number: [randomExtend(this.numbers[6], 55, 7)],
             content: "{nt}",
             textAlign: "right",
             style: {
@@ -125,20 +225,50 @@ export default {
         },
       ];
     },
-    randomExtend(minNum, maxNum) {
-      if (arguments.length === 1) {
-        return parseInt(Math.random() * minNum + 1, 10);
-      } else {
-        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+    randomExtend(minNum, maxNum, type) {
+      var date = new Date();
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      var d = date.getDate();
+      var h = date.getHours();
+      var mm = date.getMinutes();
+      var s = date.getSeconds();
+      var dd = date.valueOf();
+      var _d =
+        y.toString() +
+        "-" +
+        (m < 10 ? "0" : "") +
+        m.toString() +
+        "-" +
+        (d < 10 ? "0" : "") +
+        d.toString();
+      var ddd = new Date(_d).valueOf();
+      switch (type) {
+        case 1:
+          return minNum + (dd - ddd) / 6000 + Math.ceil(Math.random() * 2);
+          break;
+        case 2:
+        case 3:
+          return minNum + (dd - ddd) / 600000 + Math.ceil(Math.random() * 2);
+          break;
+        case 4:
+        case 5:
+          return minNum + (dd - ddd) / 60000 + Math.ceil(Math.random() * 3);
+          break;
+        case 6:
+        case 7:
+          return minNum + (dd - ddd) / 6000000 + Math.ceil(Math.random() * 2);
+          break;
+        default:
+          return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+          break;
       }
     },
   },
   mounted() {
     const { createData } = this;
-
-    createData()
-
-    setInterval(createData, 30000)
+    createData();
+    setInterval(createData, 30000);
   },
 };
 </script>

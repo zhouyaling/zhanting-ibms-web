@@ -10,31 +10,10 @@
         <div class="header-name" style="top:25%;color:#2E6099">{{projectName}}</div>
       </div>
       <div slot="slotContent" class="wrap">
-        <digital-flop></digital-flop>
+        <digital-flop :numbers="currentNumbers"></digital-flop>
         <div class="block-left-content">
           <div style="width:100%">
             <ranking-board />
-            <!--<div style="height:200px;width:100%;margin-top:60px">
-                  <dv-border-box-10>
-                    <div class="dianya-box">
-                      <div>电压</div>
-                      <div>
-                        <div>
-                          <span>功率</span>
-                          <span>10KW</span>
-                        </div>
-                        <div>
-                          <span>电流</span>
-                          <span>100V</span>
-                        </div>
-                        <div>
-                          <span>电压</span>
-                          <span>100A</span>
-                        </div>
-                      </div>
-                    </div>
-                  </dv-border-box-10>
-                </div>-->
           </div>
         </div>
         <div class="block-right-content">
@@ -76,12 +55,18 @@ export default {
   },
   data() {
     return {
+      currentNumbers:[0,0,0,0,0,0,0],
       projectName: "",
     };
   },
   mounted() {
     this.projectId = this.$route.query.projectId;
     this.projectName = this.$route.query.projectName;
+    staticProjectData.forEach(element => {
+        if(element.projectName==this.projectName){
+          this.currentNumbers = element.numbers
+        }
+    });
   },
   beforeDestroy() { },
   methods: {},

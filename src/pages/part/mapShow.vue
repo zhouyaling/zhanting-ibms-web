@@ -188,8 +188,8 @@ export default {
           itemStyle: {
             normal: {
               borderWidth: 3,
-              borderColor: "#0F4392",
-              shadowColor: "rgba(15,67,146,1)",
+              borderColor: "#67D0FF",
+              shadowColor: "#67D0FF",
               shadowOffsetX: -3,
               shadowOffsetY: 15,
               shadowBlur: 0,
@@ -290,7 +290,7 @@ export default {
               fontSize: 12,
               color: "#ffffff",
             },
-            areaColor: this.place.indexOf("china") > -1 ? "#002B51" : "#044B8A",
+            areaColor: this.place.indexOf("china") > -1 ? "#002D4B" : "#044B8A",
             borderColor: "#0F4494", //省市边界线041460
             borderWidth: 2,
             shadowBlur: 0,
@@ -438,7 +438,7 @@ export default {
 }
 
 .legend-item:nth-of-type(2) > span:nth-of-type(1) {
-  background: #002b51;
+  background: #002844;
 }
 
 .map-protocol {
