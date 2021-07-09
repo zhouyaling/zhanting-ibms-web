@@ -11,7 +11,6 @@ export default {
   props: ["waterList"],
   watch:{
     waterList(newD,oldD){
-      debugger
       this.config ={
         data:this.waterList,
         rowNum:8

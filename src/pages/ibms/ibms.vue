@@ -151,7 +151,6 @@ export default {
     },
 
     randomExtend(minNum, maxNum, type) {
-      debugger
       var date = new Date();
       var y = date.getFullYear();
       var m = date.getMonth() + 1;

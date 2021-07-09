@@ -3,16 +3,32 @@
 <template>
   <div class="bg">
     <page-layout>
-      <div slot="slotHeader" class="page-header" style="background:rgba(6, 30, 93, 0.4)">
-        <dv-decoration-5 style="width:45%;height:100px;margin-left:27.5%;" :color="['#2E6099', '#2E6099']" />
-        <dv-decoration-8 style="width:20%;height:50px;position: absolute;;top:0" :color="['#2E6099', '#2E6099']" />
-        <dv-decoration-8 :reverse="true" style="width:20%;height:50px;position: absolute;;top:0;right:0" :color="['#2E6099', '#2E6099']" />
-        <div class="header-name" style="top:25%;color:#2E6099">{{projectName}}</div>
+      <div
+        slot="slotHeader"
+        class="page-header"
+        style="background: rgba(6, 30, 93, 0.4)"
+      >
+        <dv-decoration-5
+          style="width: 45%; height: 100px; margin-left: 27.5%"
+          :color="['#2E6099', '#2E6099']"
+        />
+        <dv-decoration-8
+          style="width: 20%; height: 50px; position: absolute; top: 0"
+          :color="['#2E6099', '#2E6099']"
+        />
+        <dv-decoration-8
+          :reverse="true"
+          style="width: 20%; height: 50px; position: absolute; top: 0; right: 0"
+          :color="['#2E6099', '#2E6099']"
+        />
+        <div class="header-name" style="top: 25%; color: #2e6099">
+          {{ projectName }}
+        </div>
       </div>
       <div slot="slotContent" class="wrap">
         <digital-flop :numbers="currentNumbers"></digital-flop>
         <div class="block-left-content">
-          <div style="width:100%">
+          <div style="width: 100%">
             <ranking-board :waterList="waterList" />
           </div>
         </div>
@@ -28,6 +44,12 @@
             <line-chart></line-chart>
           </div>
         </div>
+        <img
+          @click="goBack"
+          class="img-btn"
+          src="@/assets/imgs/back-btn.png"
+          alt=""
+        />
       </div>
     </page-layout>
   </div>
@@ -51,30 +73,33 @@ export default {
     WaterLevelChart,
     ScrollBoard,
     MonitorCard,
-    LineChart
+    LineChart,
   },
   data() {
     return {
-      moneyInfo:{},
-      waterList:[],
-      currentNumbers:[0,0,0,0,0,0,0],
+      moneyInfo: {},
+      waterList: [],
+      currentNumbers: [0, 0, 0, 0, 0, 0, 0],
       projectName: "",
     };
   },
   mounted() {
     this.projectId = this.$route.query.projectId;
     this.projectName = this.$route.query.projectName;
-    staticProjectData.forEach(element => {
-        if(element.projectName==this.projectName){
-          debugger
-          this.currentNumbers = element.numbers
-          this.waterList = element.waterList
-          this.moneyInfo = element.moneyInfo
-        }
+    staticProjectData.forEach((element) => {
+      if (element.projectName == this.projectName) {
+        this.currentNumbers = element.numbers;
+        this.waterList = element.waterList;
+        this.moneyInfo = element.moneyInfo;
+      }
     });
   },
-  beforeDestroy() { },
-  methods: {},
+  beforeDestroy() {},
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -126,9 +151,6 @@ export default {
   padding-bottom: 20px;
 }
 
-
-
-
 /* 电压模块 */
 
 .dianya-box {
@@ -140,7 +162,7 @@ export default {
   flex-direction: row;
 }
 
-.dianya-box>div:nth-of-type(1) {
+.dianya-box > div:nth-of-type(1) {
   width: 50%;
   min-width: 30%;
   font-size: 24px;
@@ -150,12 +172,12 @@ export default {
   align-content: center;
   justify-content: center;
   line-height: 166px;
-  color: #0F2B73;
+  color: #0f2b73;
   font-weight: 600;
   border-right: 1px solid #133180;
 }
 
-.dianya-box>div:nth-of-type(2) {
+.dianya-box > div:nth-of-type(2) {
   font-size: 14px;
   width: 50%;
   display: flex;
@@ -166,8 +188,16 @@ export default {
   text-align: center;
 }
 
-.dianya-box>div:nth-of-type(2)>div {
+.dianya-box > div:nth-of-type(2) > div {
   width: 70%;
+}
+
+.img-btn {
+  position: absolute;
+  bottom: -60px;
+  right: 0;
+  width: 100px;
+  z-index: 99999 !important;
 }
 </style>
 
